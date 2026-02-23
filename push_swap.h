@@ -18,17 +18,18 @@
 # include <stdio.h>
 # include <stddef.h> // Para size_t y NULL
 
-typedef struct node
+typedef struct s_node
 {
     int dato;
     struct node *next;
-}				node;
+	struct node *prev;
+}				t_node;
 
-typedef struct stack
+typedef struct s_stack
 {
 	node *front;
 	int size;
-}					stack;
+}					t_stack;
 
 
 int reverserotate(stack *rr);
