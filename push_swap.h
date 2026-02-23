@@ -21,13 +21,14 @@
 typedef struct s_node
 {
     int dato;
-    struct node *next;
-	struct node *prev;
+    struct s_node *next;
+	struct s_node *prev;
 }				t_node;
 
 typedef struct s_stack
 {
-	node *front;
+	t_node *front;
+	t_node *last;
 	int size;
 }					t_stack;
 
