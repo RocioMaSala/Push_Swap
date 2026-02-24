@@ -17,25 +17,39 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <stddef.h> // Para size_t y NULL
+# include <stdbool.h>
 
 typedef struct s_node
 {
-    int dato;
-    struct s_node *next;
-	struct s_node *prev;
-}				t_node;
+    int             dato;
+    struct s_node   *next;
+    struct s_node   *prev;
+}   t_node;
 
 typedef struct s_stack
 {
-	t_node *front;
-	t_node *last;
-	int size;
-}					t_stack;
+    t_node  *front;
+    t_node  *last;
+    int     size;
+}   t_stack;
 
+t_node  *new_node(int dato);
+void    add_back(t_stack *s, int dato);
+void    print_stack(t_stack *s);
 
-int reverserotate(stack *rr);
-node *new_node(int dato);
-void add_back(stack *s, int dato);
-void print_stack(stack *s);
+void    sa(t_stack *a);
+void    ra(t_stack *a);
+void    rra(t_stack *a);
+
+void    sb(t_stack *b);
+void    rb(t_stack *b);
+void    rrb(t_stack *b);
+
+void    pa(t_stack *a, t_stack *b);
+void    pb(t_stack *a, t_stack *b);
+
+void    ss(t_stack *a, t_stack *b);
+void    rr(t_stack *a, t_stack *b);
+void    rrr(t_stack *a, t_stack *b);
 
 #endif
