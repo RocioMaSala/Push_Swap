@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 16:56:00 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/23 13:46:40 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/02/24 17:03:02 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_stack
 t_node  *new_node(int dato);
 void    add_back(t_stack *s, int dato);
 void    print_stack(t_stack *s);
+int     push (t_stack *add, int x);
 
 void    sa(t_stack *a);
 void    ra(t_stack *a);

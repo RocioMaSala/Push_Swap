@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 11:27:26 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/24 13:16:39 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/02/24 19:01:48 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 */
 
 #include "push_swap.h"
-
+/*
 int	ft_lstsize(t_list *lst)
 {
 	int	i;
@@ -36,33 +36,53 @@ int	ft_lstsize(t_list *lst)
 		lst = lst->next;
 	}
 	return (i);
-}
-First push all the elements of the array in one stack.
-Then loop all the elements of the array and alternatively swap the elements using both the stacks.
-To swap keep on pushing elements in one stack till the top of the other stack is smaller than the element being pushed from first stack.
-If the element being pushed is smaller than top of other stack then swap them (as in bubble sort).
-And in the end (tricky step) get the top element from the stack and place it in the array at its position.
-Keep doing this alternatively for both the stacks
+}*/
 
-
-void bubble_sort (int *ar)
+int	find_min(t_stack *stack)
 {
+	node	*current;
+	int		min;
+	int		i;
 
-
-
-
-
-
-
-
-
-
-
-
-	
+	if (!stack || stack->size == 0)
+		return (0); 
+	current = stack->front;
+	min = current->dato;
+	i = 0;
+	while (i < stack->size && current->dato != NULL)
+	{
+		if (current->dato < min) // la primera vez no se cumple porque el dato va a ser el mismo, por lo que current pasa al siguiente dígito.
+			min = current->dato;
+		current = current->next;
+		i++;
+	}
+	return (min);
 }
 
 
+void bubble_sort (t_stack *stacka) // Voy a pasar el menor al stack B
+{
+	t_stack *stackb;
+	node *firsta;
+	node *seconda;
+
+	stackb = malloc(sizeof(t_stack));
+	stackb -> front = NULL;
+	stackb -> last = NULL;
+	stackb -> size = 0;
+	firsta = stacka -> front;
+	seconda = firsta -> next;
+	pb (*stacka, *stackb);
+	while ((stacka->size) > 0)
+	{
+		if ((firsta->dato) > (seconda->dato)) 
+			sa(stacka);
+		else	
+			pb(stacka, stackb);
+	}	
+}
+
+/*
 void bubble_sort (t_list *stack)
 {
     int i;
