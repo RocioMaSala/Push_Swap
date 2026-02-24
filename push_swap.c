@@ -6,13 +6,13 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 16:59:37 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/23 18:07:41 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/02/24 16:31:34 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
-/*
+
 void initializer_stack(stack *a)
 {
     s -> front = NULL;
@@ -118,7 +118,7 @@ int rotate(stack *rotate)
     first -> next = NULL;
     return (1);
 }
-*/
+
 int reverse_rotate(stack *rr) 
 {
     node *last;
