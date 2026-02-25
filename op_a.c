@@ -1,7 +1,6 @@
 
 #include "push_swap.h"
 
-
 int sa(t_stack *a)
 {
     t_node *first;
@@ -14,7 +13,7 @@ int sa(t_stack *a)
     first -> next = second -> next;
     second -> next = first;
     a -> front = second;
-    write(1, "sb\n", 3)
+    write(1, "sa\n", 3);
     return (1);
 }
 
@@ -29,40 +28,46 @@ int pa(t_stack *a, t_stack *b) // Diferente versión José y yo. Me gusta más l
     b -> front = firstb -> next; 
     firstb -> next = a-> front;
     a-> front = firstb;
-    write(1, "pb\n", 3);
+    write(1, "pa\n", 3);
     return (1);
        
 }
+
 int ra(t_stack *a)
 {
+    t_node *last;
     t_node *first;
+    t_node *second;
 
-    if (!a || a->size < 2)
-        return(0);
-    first = a->front;
-    a->front = first->next;
-    a->front->prev = NULL;
-    first->next = NULL;
-    first->prev = a->last;
-    a->last->next = first;
-    a->last = first;
-    write(1, "rb\n", 3);
+    if (!a)
+        return (0);
+    first = a -> front;
+    second = first -> next;
+    last = a -> front;
+    a -> front = second;
+    while (last->next != NULL)
+         last = last -> next;
+    last -> next = first;
+    first -> next = NULL;
+    write(1, "ra\n", 3);
     return (1);
 }
 
 int rra(t_stack *a) 
 {
     t_node *last;
+    t_node *prev; // Para gestionar el antepenúltimo
 
-    if (!a || a->size < 2)
-        return ;
-    last = a->last;
-    a->last = last->prev;
-    a->last->next = NULL;
-    last->prev = NULL;
-    last->next = a->front;
-    a->front->prev = last;
-    a->front = last;
-    write(1, "rrb\n", 4);
+    prev = NULL;
+    last = a -> front;
+    while (last->next != NULL)
+    {
+        prev = last;
+        last = last -> next;
+    }    
+    prev -> next = NULL;
+    last -> next = a -> front;
+    a -> front = last;
+    write(1, "rra\n", 4);
     return (1);
 }

@@ -6,12 +6,11 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/24 16:55:38 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/24 16:56:24 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/02/25 16:54:39 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-Para probar movimientos:
-
+#include "push_swap.h"
 
 node *new_node(int dato)
 {

@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 11:27:26 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/25 16:05:39 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/02/25 17:06:16 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void bubble_sort (t_stack *stacka, int size)
 	int j;
 	int rotation;
 	
+	if (!stacka || !stacka->front || size < 2)
+    	return;
 	j = 0;
 	rotation = 0;
 	while (j < (size - 1)) // Para determinar la "pasada general"
@@ -31,7 +33,7 @@ void bubble_sort (t_stack *stacka, int size)
 			rotation++;
 			i++;
 		}
-		while (rotation != 0)
+		while (rotation > 0)
 		{
 			rra (stacka);
 			rotation--;
@@ -40,7 +42,7 @@ void bubble_sort (t_stack *stacka, int size)
 	}
 }
 
-/*
+
 void push_front(t_stack *stack, int value)
 {
     t_node *new_node;
@@ -53,7 +55,7 @@ void push_front(t_stack *stack, int value)
     new_node->next = stack->front;
     stack->front = new_node;
 }
-
+/*
 void print_stack(t_stack *stack)
 {
     t_node *current;

@@ -19,6 +19,29 @@ void sb(t_stack *b)
     write(1, "sb\n", 3);
 }
 
+void	pb(t_stack *a, t_stack *b)
+{
+	t_node	*tmp;
+
+	if (!a || a->size == 0 || !a->front)
+		return ;
+	tmp = a->front;
+	a->front = tmp->next;
+	if (a->front)
+		a->front->prev = NULL;
+	else
+		a->last = NULL;
+	a->size--;
+	tmp->next = b->front;
+	if (b->front)
+		b->front->prev = tmp;
+	else
+		b->last = tmp;
+	b->front = tmp;
+	tmp->prev = NULL;
+	b->size++;
+	write(1, "pb\n", 3);
+}
 
 void rb(t_stack *b)
 {
