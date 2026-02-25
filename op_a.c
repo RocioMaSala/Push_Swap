@@ -13,7 +13,7 @@
 #include "push_swap.h"
 
 
-int swap (stack *swap)
+int sa(stack *swap)
 {
     node *first;
     node *second;
@@ -28,7 +28,7 @@ int swap (stack *swap)
     return (1);
 }
 
-int pushab(stack *pusha, stack *pushb)
+int pa(stack *pusha, stack *pushb)
 {
     node *firsta;
     node *firstb;
@@ -43,7 +43,7 @@ int pushab(stack *pusha, stack *pushb)
        
 }
 
-int rotate(stack *rotate)
+int ra(stack *rotate)
 {
     node *last;
     node *first;
@@ -62,7 +62,7 @@ int rotate(stack *rotate)
     return (1);
 }
 
-int reverse_rotate(stack *rr) 
+int rra(stack *rr) 
 {
     node *last;
     node *prev; // Para gestionar el antepenúltimo
