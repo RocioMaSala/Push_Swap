@@ -2,69 +2,67 @@
 #include "push_swap.h"
 
 
-int sa(t_stack *swap)
+int sa(t_stack *a)
 {
     t_node *first;
     t_node *second;
 
-    if (!swap || swap -> size < 2)
+    if (!a || a -> size < 2)
         return(0);
-    first = swap -> front;
+    first = a -> front;
     second = first -> next;// En un nodo si que hay next, pero en una pila no, por eso poner swapa -> next, no tiene sentido 
     first -> next = second -> next;
     second -> next = first;
-    swap -> front = second;
+    a -> front = second;
+    write(1, "sb\n", 3)
     return (1);
 }
 
-int pa(t_stack *pusha, t_stack *pushb)
+int pa(t_stack *a, t_stack *b) // Diferente versión José y yo. Me gusta más la mía (Ro).
 {
     t_node *firsta;
     t_node *firstb;
 
-    if (!pushb)
+    if (!b || b->size == 0 || !b -> front)
         return (0);
-    firstb = pushb -> front;
-    pushb -> front = firstb -> next; 
-    firstb -> next = pusha-> front;
-    pusha-> front = firstb;
+    firstb = b -> front;
+    b -> front = firstb -> next; 
+    firstb -> next = a-> front;
+    a-> front = firstb;
+    write(1, "pb\n", 3);
     return (1);
        
 }
-
-int ra(t_stack *rotate)
+int ra(t_stack *a)
 {
-    t_node *last;
     t_node *first;
-    t_node *second;
 
-    if (!rotate)
-        return (0);
-    first = rotate -> front;
-    second = first -> next;
-    last = rotate -> front;
-    rotate -> front = second;
-    while (last->next != NULL)
-         last = last -> next;
-    last -> next = first;
-    first -> next = NULL;
+    if (!a || a->size < 2)
+        return(0);
+    first = a->front;
+    a->front = first->next;
+    a->front->prev = NULL;
+    first->next = NULL;
+    first->prev = a->last;
+    a->last->next = first;
+    a->last = first;
+    write(1, "rb\n", 3);
     return (1);
 }
 
-int rra(t_stack *rr) 
+int rra(t_stack *a) 
 {
     t_node *last;
-    t_node *prev; // Para gestionar el antepenúltimo
 
-    prev = NULL;
-    last = rr -> front;
-    while (last->next != NULL)
-    {
-        prev = last;
-        last = last -> next;
-    }    
-    prev -> next = NULL;
-    last -> next = rr -> front;
-    rr -> front = last;
+    if (!a || a->size < 2)
+        return ;
+    last = a->last;
+    a->last = last->prev;
+    a->last->next = NULL;
+    last->prev = NULL;
+    last->next = a->front;
+    a->front->prev = last;
+    a->front = last;
+    write(1, "rrb\n", 4);
     return (1);
 }
