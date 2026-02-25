@@ -1,22 +1,11 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   op_a.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/24 16:31:00 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/25 11:39:35 by romarti2         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-int sa(stack *swap)
+int sa(t_stack *swap)
 {
-    node *first;
-    node *second;
+    t_node *first;
+    t_node *second;
 
     if (!swap || swap -> size < 2)
         return(0);
@@ -28,10 +17,10 @@ int sa(stack *swap)
     return (1);
 }
 
-int pa(stack *pusha, stack *pushb)
+int pa(t_stack *pusha, t_stack *pushb)
 {
-    node *firsta;
-    node *firstb;
+    t_node *firsta;
+    t_node *firstb;
 
     if (!pushb)
         return (0);
@@ -43,11 +32,11 @@ int pa(stack *pusha, stack *pushb)
        
 }
 
-int ra(stack *rotate)
+int ra(t_stack *rotate)
 {
-    node *last;
-    node *first;
-    node *second;
+    t_node *last;
+    t_node *first;
+    t_node *second;
 
     if (!rotate)
         return (0);
@@ -62,10 +51,10 @@ int ra(stack *rotate)
     return (1);
 }
 
-int rra(stack *rr) 
+int rra(t_stack *rr) 
 {
-    node *last;
-    node *prev; // Para gestionar el antepenúltimo
+    t_node *last;
+    t_node *prev; // Para gestionar el antepenúltimo
 
     prev = NULL;
     last = rr -> front;
