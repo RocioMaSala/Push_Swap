@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 11:27:26 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/25 17:06:16 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/02/26 15:48:36 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void bubble_sort (t_stack *stacka, int size)
     	return;
 	j = 0;
 	rotation = 0;
-	while (j < (size - 1)) // Para determinar la "pasada general"
+	while (j < (size - 1))
 	{
 		i = 0;
-		while (i < (size - j - 1)) // Para determinar rotación dentro de la "pasada general"
+		while (i < (size - j - 1))
 		{
 			if ((stacka->front->dato)>(stacka->front->next->dato))
 				sa(stacka);
