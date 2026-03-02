@@ -1,4 +1,4 @@
-void	assign_index(t_stack *a)
+void assign_index(t_stack *a)
 {
 	t_node	*curr;
 	t_node	*compare;
@@ -79,6 +79,34 @@ void	push_back_to_a(t_stack *a, t_stack *b)
 	}
 }
 
-
-
 void	push_to_b_chunks(t_stack *a, t_stack *b)
+
+void complex_algorithm(t_stack *a)
+{
+    t_stack *b;
+    int sizeb;
+    int range;
+
+    b = malloc(sizeof(t_stack));
+    b->front = NULL;
+    b->last = NULL;
+    b -> size = 0;
+    range = 1.3 * (a->size/5);
+    assign_index(a);
+    while ((a->size) > 0) // aquí vaciamos a
+    {
+        sizeb = b->size;
+        if((a->front->index) >= (sizeb + range))
+            ra (a);
+        else if (((a->front->index) > sizeb) && ((a->front->index) < (sizeb + range)))
+        {
+            pb (a,b);  
+        }
+        else if ((a->front->index) <= sizeb)
+        {
+            pb (a,b);
+            rb (b);
+        }
+    }
+    push_back_to_a (a, b); // aquí vaciamos b
+}

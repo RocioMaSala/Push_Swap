@@ -12,46 +12,34 @@
 
 #include "push_swap.h"
 
-void ksort(t_stack a)
+void ksort(t_stack *a)
 {
     t_stack *b;
     int sizea;
     int sizeb;
     int range;
-    int index;
 
+    b = malloc(sizeof(t_stack));
     b->front = NULL;
     b->last = NULL;
+    b -> size = 0;
     sizea = a->size;
     range = 1.3 * (sizea/5);
-    while (/*algo tengo que escribir aquí*/)
+    assign_index(a);
+    while ((a->size) > 0) // aquí vaciamos a
     {
-        sizeb = b->size; // Ventana mínima, sizeb tiene que ir aumentando o no, es variable.
-        if(index >= (sizeb + range))
+        sizeb = b->size;
+        if((a->front->index) >= (sizeb + range))
             ra (a);
-        else if ((index > sizeb) && (index < (sizeb + range)))
+        else if (((a->front->index) > sizeb) && ((a->front->index) < (sizeb + range)))
         {
-            pb (a);
-            
+            pb (a,b);  
         }
-        else if (index <= sizeb)
+        else if ((a->front->index) <= sizeb)
         {
-            pb (a);
+            pb (a,b);
             rb (b);
         }
-        index++; // El index tope es n-1... esto sirve para el while?
     }
-
-
-
-
-
-    
-
-
-
-
-
-
-
+    while ((b->size) > 0)
 }
