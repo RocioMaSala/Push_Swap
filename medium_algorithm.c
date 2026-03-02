@@ -1,14 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array_stack.c                                      :+:      :+:    :+:   */
+/*   medium_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:19:58 by jgodino-          #+#    #+#             */
-/*   Updated: 2026/02/23 17:12:40 by jgodino-         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:28:24 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "push_swap.h"
 
 int	find_min_pos(t_stack *s)
 {
@@ -36,7 +38,7 @@ int	find_min_pos(t_stack *s)
 	return (min_pos);
 }
 
-void	intermediate_algorithm(t_stack *a, t_stack *b)
+void	medium_algorithm(t_stack *a, t_stack *b)
 {
 	int	min_pos;
 

@@ -1,3 +1,7 @@
+
+#include "push_swap.h"
+
+
 void assign_index(t_stack *a)
 {
 	t_node	*curr;
@@ -79,18 +83,18 @@ void	push_back_to_a(t_stack *a, t_stack *b)
 	}
 }
 
-void	push_to_b_chunks(t_stack *a, t_stack *b)
+//void	push_to_b_chunks(t_stack *a, t_stack *b)
 
-void complex_algorithm(t_stack *a)
+void complex_algorithm(t_stack *a, t_stack *b)
 {
-    t_stack *b;
-    int sizeb;
-    int range;
+//    t_stack *b;
+	  int sizeb;
+      int range;
 
-    b = malloc(sizeof(t_stack));
-    b->front = NULL;
-    b->last = NULL;
-    b -> size = 0;
+//    b = malloc(sizeof(t_stack));
+//    b->front = NULL;
+//    b->last = NULL;
+//    b -> size = 0;
     range = 1.3 * (a->size/5);
     assign_index(a);
     while ((a->size) > 0) // aquí vaciamos a
