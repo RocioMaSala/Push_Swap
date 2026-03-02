@@ -6,13 +6,13 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 11:27:26 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/26 15:48:36 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/02 17:35:21 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void bubble_sort (t_stack *stacka, int size)
+void simple_algorithm (t_stack *stacka, int size)
 {
 	int i;
 	int j;

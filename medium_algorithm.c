@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:19:58 by jgodino-          #+#    #+#             */
-/*   Updated: 2026/03/02 16:28:24 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/02 16:31:14 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,7 @@ void	medium_algorithm(t_stack *a, t_stack *b)
 		}
 		pb(a, b);
 	}
-
 	sort_three(a);
-
 	while (b->size > 0)
 		pa(a, b);
 }

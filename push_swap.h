@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 16:56:00 by romarti2          #+#    #+#             */
-/*   Updated: 2026/02/26 16:25:36 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/02 17:42:26 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ t_node  *new_node(int dato);
 void    add_back(t_stack *s, int dato);
 void    print_stack(t_stack *s);
 int     push (t_stack *add, int x);
-void bubble_sort (t_stack *stacka, int size);
+void simple_algorithm (t_stack *stacka, int size);
+void	medium_algorithm(t_stack *a, t_stack *b);
+void complex_algorithm(t_stack *a, t_stack *b);
 
 
 int    sa(t_stack *a);

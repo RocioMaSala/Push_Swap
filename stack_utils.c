@@ -49,3 +49,24 @@ void reverse_rotate_silent(t_stack *s)
     s->front->prev = last;
     s->front = last;
 }
+
+int compute_disorder(t_stack *a)
+{
+    int mistakes;
+    int total_pairs;
+    t_node *current;
+    
+    if (!a || !a->front)
+        return 0;
+    mistakes = 0;
+    total_pairs = 0;
+    current = a->front;
+    while (current -> next)
+    {
+        if ((current->dato) > (current->next->dato))
+            mistakes++;
+        current = current -> next;
+        total_pairs++;
+    }
+    return ((float)(mistakes / total_pairs));    
+}
