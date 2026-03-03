@@ -12,19 +12,55 @@
 
 #include "push_swap.h"
 
-void	adaptive_algorithm(t_stack *a, t_stack *b)
+float	compute_disorder(t_stack *a)
 {
-	int	disorder;
+	int		mistakes;
+	int		total_pairs;
+	t_node	*i;
+	t_node	*j;
 
-	if (!a || a->size <= 1)
-		return ;
-	disorder = compute_disorder(a);
-	if (a->size == 3)
-		sort_three(a);
-	else if (a->size <= 5)
-		medium_algorithm(a, b);
-	else if (disorder < 2)
+	if (!a || a->size < 2)
+		return (0);
+	mistakes = 0;
+	total_pairs = 0;
+	i = a->front;
+	while (i)
+	{
+		j = i->next;
+		while (j)
+		{
+			total_pairs++;
+			if (i->dato > j->dato)
+				mistakes++;
+			j = j->next;
+		}
+		i = i->next;
+	}
+	return ((float)mistakes / total_pairs);
+}
+
+void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
+{
+	float	d;
+
+	d = compute_disorder(a);
+	if (forced && ft_strncmp(forced, "--simple", 8) == 0)
 		simple_algorithm(a, a->size);
-	else
+	else if (forced && ft_strncmp(forced, "--medium", 8) == 0)
+		medium_algorithm(a, b);
+	else if (forced && ft_strncmp(forced, "--complex", 9) == 0)
 		complex_algorithm(a, b);
+	else
+	{
+		if (a->size == 3)
+			sort_three(a);
+		else if (a->size <= 5)
+			medium_algorithm(a, b);
+		else if (d < 0.2)
+			simple_algorithm(a, a->size);
+		else if (d < 0.5)
+			medium_algorithm(a, b);
+		else
+			complex_algorithm(a, b);
+	}
 }

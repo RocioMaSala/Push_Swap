@@ -1,18 +1,35 @@
 #include "push_swap.h"
 
-static void	free_split(char **str)
+static int	is_valid_num(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (!str)
-		return ;
+	if (str[i] == '-' || str[i] == '+')
+		i++;
+	if (!str[i])
+		return (0);
 	while (str[i])
 	{
-		free(str[i]);
+		if (!ft_isdigit(str[i]))
+			return (0);
 		i++;
 	}
-	free(str);
+	return (1);
+}
+
+static int	has_duplicates(t_stack *a, int n)
+{
+	t_node	*curr;
+
+	curr = a->front;
+	while (curr)
+	{
+		if (curr->dato == n)
+			return (1);
+		curr = curr->next;
+	}
+	return (0);
 }
 
 void	parse_to_stack(int argc, char **argv, t_stack *a)
@@ -20,20 +37,25 @@ void	parse_to_stack(int argc, char **argv, t_stack *a)
 	int		i;
 	int		j;
 	char	**temp;
+	long	val;
 
 	i = 1;
 	while (i < argc)
 	{
 		temp = ft_split(argv[i], ' ');
-		if (!temp)
-			return ;
 		j = 0;
-		while (temp[j])
+		while (temp && temp[j])
 		{
-			add_back(a, ft_atoi(temp[j]));
+			if (!is_valid_num(temp[j]))
+				error_exit(a, NULL);
+			val = ft_atol(temp[j]);
+			if (val < -2147483648 || val > 2147483647 || has_duplicates(a, (int)val))
+				error_exit(a, NULL);
+			add_back(a, (int)val);
+			free(temp[j]);
 			j++;
 		}
-		free_split(temp);
+		free(temp);
 		i++;
 	}
 }

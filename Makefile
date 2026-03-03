@@ -13,23 +13,12 @@
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
-
-SRC = main.c \
-      adaptive_algorithm.c \
-      medium_algorithm.c \
-      complex_algorithm.c \
-      simple_algorithm.c \
-      parsing.c \
-      stack_utils.c \
-      stack_cleanup.c \
-      op_a.c \
-      op_b.c \
-      op_push.c \
-      op_combined.c \
-      push_swap.c
-
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
+
+SRC = main.c adaptive_algorithm.c medium_algorithm.c complex_algorithm.c \
+      simple_algorithm.c parsing.c stack_utils.c stack_cleanup.c \
+      op_a.c op_b.c op_push.c op_combined.c push_swap.c
 
 OBJ = $(SRC:.c=.o)
 
