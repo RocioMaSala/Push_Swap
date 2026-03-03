@@ -10,35 +10,46 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap.a
+NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Werror -Wextra
 
-SRC = push_swap.c  \
+SRC = main.c \
+      adaptive_algorithm.c \
+      medium_algorithm.c \
+      complex_algorithm.c \
+      simple_algorithm.c \
+      parsing.c \
+      stack_utils.c \
+      stack_cleanup.c \
+      op_a.c \
+      op_b.c \
+      op_push.c \
+      op_combined.c \
+      push_swap.c
 
-
-
-      get_next_line_utils.c \ 
+LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
 
 OBJ = $(SRC:.c=.o)
 
-INCLUDE = push_swap.h
+all: $(NAME)
 
-all: ${NAME}
+$(NAME): $(OBJ)
+	@make -C $(LIBFT_DIR)
+	$(CC) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
-${NAME}: ${OBJ}
-	@ar rcs ${NAME} ${OBJ}
-
-%.o: %.c Makefile push_swap.h
-	@echo "Compiling: $<"
-	@${CC} ${CFLAGS} -c $< -o $@
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -f ${OBJ}
+	@make clean -C $(LIBFT_DIR)
+	rm -f $(OBJ)
 
 fclean: clean
-	@rm -f ${NAME}
+	@make fclean -C $(LIBFT_DIR)
+	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re

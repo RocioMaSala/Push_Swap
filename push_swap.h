@@ -13,48 +13,52 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdlib.h> // Para malloc y free
-# include <unistd.h>
-# include <stdio.h>
-# include <stddef.h> // Para size_t y NULL
 # include <stdbool.h>
+# include <stddef.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <unistd.h>
+# include "./libft/libft.h"
 
 typedef struct s_node
 {
-    int             dato;
-    struct s_node   *next;
-    struct s_node   *prev;
-}   t_node;
+	int				dato;
+	int				index;
+	struct s_node	*next;
+	struct s_node	*prev;
+}					t_node;
 
 typedef struct s_stack
 {
-    t_node  *front;
-    t_node  *last;
-    int     size;
-}   t_stack;
+	t_node			*front;
+	t_node			*last;
+	int				size;
+}					t_stack;
 
-t_node  *new_node(int dato);
-void    add_back(t_stack *s, int dato);
-void    print_stack(t_stack *s);
-int     push (t_stack *add, int x);
-void simple_algorithm (t_stack *stacka, int size);
-void	medium_algorithm(t_stack *a, t_stack *b);
-void complex_algorithm(t_stack *a, t_stack *b);
+void				add_back(t_stack *s, int dato);
+void				parse_to_stack(int argc, char **argv, t_stack *a);
+void				free_stack(t_stack *s);
+void				initializer_stack(t_stack *s);
 
+void				simple_algorithm(t_stack *a, int size);
+void				medium_algorithm(t_stack *a, t_stack *b);
+void				complex_algorithm(t_stack *a, t_stack *b);
+void				sort_three(t_stack *a);
+void				assign_index(t_stack *a);
+void				adaptive_algorithm(t_stack *a, t_stack *b);
+int					compute_disorder(t_stack *a);
 
-int    sa(t_stack *a);
-int    ra(t_stack *a);
-int    rra(t_stack *a);
+void				sa(t_stack *a);
+void				sb(t_stack *b);
+void				pa(t_stack *a, t_stack *b);
+void				pb(t_stack *a, t_stack *b);
+void				ra(t_stack *a);
+void				rb(t_stack *b);
+void				rra(t_stack *a);
+void				rrb(t_stack *b);
 
-void    sb(t_stack *b);
-void    rb(t_stack *b);
-void    rrb(t_stack *b);
-
-int    pa(t_stack *a, t_stack *b);
-void    pb(t_stack *a, t_stack *b);
-
-void    ss(t_stack *a, t_stack *b);
-void    rr(t_stack *a, t_stack *b);
-void    rrr(t_stack *a, t_stack *b);
+void				swap_silent(t_stack *s);
+void				rotate_silent(t_stack *s);
+void				reverse_rotate_silent(t_stack *s);
 
 #endif
