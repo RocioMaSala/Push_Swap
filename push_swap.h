@@ -45,8 +45,8 @@ void				medium_algorithm(t_stack *a, t_stack *b);
 void				complex_algorithm(t_stack *a, t_stack *b);
 void				sort_three(t_stack *a);
 void				assign_index(t_stack *a);
-void				adaptive_algorithm(t_stack *a, t_stack *b);
-int					compute_disorder(t_stack *a);
+void				adaptive_algorithm(t_stack *a, t_stack *b, char *forced);
+float				compute_disorder(t_stack *a);
 
 void				sa(t_stack *a);
 void				sb(t_stack *b);
@@ -60,5 +60,7 @@ void				rrb(t_stack *b);
 void				swap_silent(t_stack *s);
 void				rotate_silent(t_stack *s);
 void				reverse_rotate_silent(t_stack *s);
+
+void				error_exit(t_stack *a, t_stack *b);
 
 #endif
