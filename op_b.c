@@ -6,11 +6,12 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 13:32:12 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/04 13:32:35 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/04 18:55:14 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
 void	sb(t_stack *b)
 {
 	swap_silent(b);
