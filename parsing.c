@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/04 12:59:15 by romarti2          #+#    #+#             */
+/*   Updated: 2026/03/04 13:00:23 by romarti2         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	is_valid_num(char *str)
@@ -49,7 +61,8 @@ void	parse_to_stack(int argc, char **argv, t_stack *a)
 			if (!is_valid_num(temp[j]))
 				error_exit(a, NULL);
 			val = ft_atol(temp[j]);
-			if (val < -2147483648 || val > 2147483647 || has_duplicates(a, (int)val))
+			if (val < -2147483648 || val > 2147483647 || has_duplicates(a,
+					(int)val))
 				error_exit(a, NULL);
 			add_back(a, (int)val);
 			free(temp[j]);

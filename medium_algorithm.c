@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:19:58 by jgodino-          #+#    #+#             */
-/*   Updated: 2026/03/02 16:31:14 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:32:18 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,14 @@ void	medium_algorithm(t_stack *a, t_stack *b)
 {
 	int	min_pos;
 
-
 	while (a->size > 3)
 	{
 		min_pos = find_min_pos(a);
-
 		if (min_pos <= a->size / 2)
 		{
 			while (min_pos-- > 0)
 				ra(a);
 		}
-
 		else
 		{
 			min_pos = a->size - min_pos;
@@ -66,7 +63,6 @@ void	medium_algorithm(t_stack *a, t_stack *b)
 		pa(a, b);
 }
 
-
 void	sort_three(t_stack *a)
 {
 	int	first;
@@ -78,7 +74,6 @@ void	sort_three(t_stack *a)
 	first = a->front->dato;
 	second = a->front->next->dato;
 	third = a->last->dato;
-
 	if (first > second && second < third && first < third)
 		sa(a);
 	else if (first > second && second > third)

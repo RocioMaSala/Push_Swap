@@ -6,13 +6,13 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:31:24 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/02 16:31:24 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/04 13:21:06 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void assign_index(t_stack *a)
+void	assign_index(t_stack *a)
 {
 	t_node	*curr;
 	t_node	*compare;
@@ -36,14 +36,12 @@ void assign_index(t_stack *a)
 	}
 }
 
-
 int	get_range(t_stack *s)
 {
 	if (s->size <= 100)
 		return (15);
 	return (35);
 }
-
 
 int	get_max_index_pos(t_stack *b)
 {
@@ -93,34 +91,28 @@ void	push_back_to_a(t_stack *a, t_stack *b)
 	}
 }
 
-//void	push_to_b_chunks(t_stack *a, t_stack *b)
-
-void complex_algorithm(t_stack *a, t_stack *b)
+void	complex_algorithm(t_stack *a, t_stack *b)
 {
-//    t_stack *b;
-	  int sizeb;
-      int range;
+	int	sizeb;
+	int	range;
 
-//    b = malloc(sizeof(t_stack));
-//    b->front = NULL;
-//    b->last = NULL;
-//    b -> size = 0;
-    range = 1.3 * (a->size/5);
-    assign_index(a);
-    while ((a->size) > 0) // aquí vaciamos a
-    {
-        sizeb = b->size;
-        if((a->front->index) >= (sizeb + range))
-            ra (a);
-        else if (((a->front->index) > sizeb) && ((a->front->index) < (sizeb + range)))
-        {
-            pb (a,b);  
-        }
-        else if ((a->front->index) <= sizeb)
-        {
-            pb (a,b);
-            rb (b);
-        }
-    }
-    push_back_to_a (a, b); // aquí vaciamos b
+	range = 1.3 * (a->size / 5);
+	assign_index(a);
+	while ((a->size) > 0)
+	{
+		sizeb = b->size;
+		if ((a->front->index) >= (sizeb + range))
+			ra(a);
+		else if (((a->front->index) > sizeb) && ((a->front->index) < (sizeb
+					+ range)))
+		{
+			pb(a, b);
+		}
+		else if ((a->front->index) <= sizeb)
+		{
+			pb(a, b);
+			rb(b);
+		}
+	}
+	push_back_to_a(a, b);
 }

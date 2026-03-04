@@ -1,72 +1,84 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   stack_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: romarti2 <romarti2@student.42madrid.com:w  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/03/04 13:14:12 by romarti2          #+#    #+#             */
+/*   Updated: 2026/03/04 13:14:12 by romarti2         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void swap_silent(t_stack *s)
+void	swap_silent(t_stack *s)
 {
-    t_node *first;
-    t_node *second;
+	t_node	*first;
+	t_node	*second;
 
-    if (!s || s->size < 2)
-        return ;
-    first = s->front;
-    second = first->next;
-    first->next = second->next;
-    if (second->next)
-        second->next->prev = first;
-    else
-        s->last = first;
-    second->next = first;
-    second->prev = NULL;
-    first->prev = second;
-    s->front = second;
+	if (!s || s->size < 2)
+		return ;
+	first = s->front;
+	second = first->next;
+	first->next = second->next;
+	if (second->next)
+		second->next->prev = first;
+	else
+		s->last = first;
+	second->next = first;
+	second->prev = NULL;
+	first->prev = second;
+	s->front = second;
 }
 
-void rotate_silent(t_stack *s)
+void	rotate_silent(t_stack *s)
 {
-    t_node *first;
+	t_node	*first;
 
-    if (!s || s->size < 2)
-        return ;
-    first = s->front;
-    s->front = first->next;
-    s->front->prev = NULL;
-    first->next = NULL;
-    first->prev = s->last;
-    s->last->next = first;
-    s->last = first;
+	if (!s || s->size < 2)
+		return ;
+	first = s->front;
+	s->front = first->next;
+	s->front->prev = NULL;
+	first->next = NULL;
+	first->prev = s->last;
+	s->last->next = first;
+	s->last = first;
 }
 
-void reverse_rotate_silent(t_stack *s)
+void	reverse_rotate_silent(t_stack *s)
 {
-    t_node *last;
+	t_node	*last;
 
-    if (!s || s->size < 2)
-        return ;
-    last = s->last;
-    s->last = last->prev;
-    s->last->next = NULL;
-    last->prev = NULL;
-    last->next = s->front;
-    s->front->prev = last;
-    s->front = last;
+	if (!s || s->size < 2)
+		return ;
+	last = s->last;
+	s->last = last->prev;
+	s->last->next = NULL;
+	last->prev = NULL;
+	last->next = s->front;
+	s->front->prev = last;
+	s->front = last;
 }
 
-int compute_disorder(t_stack *a)
+int	compute_disorder(t_stack *a)
 {
-    int mistakes;
-    int total_pairs;
-    t_node *current;
-    
-    if (!a || !a->front)
-        return 0;
-    mistakes = 0;
-    total_pairs = 0;
-    current = a->front;
-    while (current -> next)
-    {
-        if ((current->dato) > (current->next->dato))
-            mistakes++;
-        current = current -> next;
-        total_pairs++;
-    }
-    return ((float)(mistakes / total_pairs));    
+	int		mistakes;
+	int		total_pairs;
+	t_node	*current;
+
+	if (!a || !a->front)
+		return (0);
+	mistakes = 0;
+	total_pairs = 0;
+	current = a->front;
+	while (current->next)
+	{
+		if ((current->dato) > (current->next->dato))
+			mistakes++;
+		current = current->next;
+		total_pairs++;
+	}
+	return ((float)(mistakes / total_pairs));
 }
