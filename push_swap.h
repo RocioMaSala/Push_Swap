@@ -63,4 +63,25 @@ void				reverse_rotate_silent(t_stack *s);
 
 void				error_exit(t_stack *a, t_stack *b);
 
+typedef struct s_bench
+{
+	int		sa;
+	int		sb;
+	int		ss;
+	int		pa;
+	int		pb;
+	int		ra;
+	int		rb;
+	int		rr;
+	int		rra;
+	int		rrb;
+	int		rrr;
+	int		total;
+	bool	active;
+}			t_bench;
+
+extern t_bench	g_bench;
+
+void	print_bench(float disorder, char *strat, char *complexity);
+
 #endif
