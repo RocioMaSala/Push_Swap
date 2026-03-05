@@ -46,6 +46,8 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 	char	*comp;
 
 	d = compute_disorder(a);
+	strat = "Adaptative";
+	comp = "O(n long n)";
 	if (forced && ft_strncmp(forced, "--simple", 8) == 0)
 	{
 		strat = "Simple";
@@ -67,15 +69,30 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 	else
 	{
 		if (a->size == 3)
+		{
 			sort_three(a);
+			comp = "O(n^2)";
+		}
 		else if (a->size <= 5)
+		{		
 			medium_algorithm(a, b);
+			comp = "O(n sqrt n)";
+		}
 		else if (d < 0.2)
+		{
 			simple_algorithm(a, a->size);
+			comp = "O(n^2)";
+		}
 		else if (d < 0.5)
+		{
 			medium_algorithm(a, b);
+			comp = "O(n sqrt n)";
+		}
 		else
+		{
 			complex_algorithm(a, b);
+			comp = "O(n log n)";
+		}
 	}
 
 	if(g_bench.active)
