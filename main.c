@@ -24,25 +24,28 @@ int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
-	char	*forced_algo;
-	int		offset;
+	char	*forced;
+	int		i;
 
 	if (argc < 2)
 		return (0);
 	initializer_stack(&a);
 	initializer_stack(&b);
-	forced_algo = NULL;
-	offset = 1;
-	if (argv[1][0] == '-' && argv[1][1] == '-')
+	forced = NULL;
+	i = 1;
+	while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
 	{
-		forced_algo = argv[1];
-		offset = 2;
+		if (ft_strncmp(argv[i], "--bench", 8) == 0)
+			g_bench.active = true;
+		else
+			forced = argv[i];
+		i++;
 	}
-	parse_to_stack(argc - offset + 1, &argv[offset - 1], &a);
+	parse_to_stack(argc - i + 1, &argv[i - 1], &a);
 	if (a.size > 1)
 	{
 		assign_index(&a);
-		adaptive_algorithm(&a, &b, forced_algo);
+		adaptive_algorithm(&a, &b, forced);
 	}
 	free_stack(&a);
 	free_stack(&b);
