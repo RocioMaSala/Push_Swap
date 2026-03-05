@@ -34,6 +34,11 @@ void	pa(t_stack *a, t_stack *b)
 	tmp->prev = NULL;
 	a->size++;
 	write(1, "pa\n", 3);
+	if(g_bench.active)
+	{
+		g_bench.pa++;
+		g_bench.total++;
+	}
 }
 
 void	pb(t_stack *a, t_stack *b)
@@ -58,4 +63,9 @@ void	pb(t_stack *a, t_stack *b)
 	tmp->prev = NULL;
 	b->size++;
 	write(1, "pb\n", 3);
+	if(g_bench.active)
+	{
+		g_bench.pb++;
+		g_bench.total++;
+	}
 }
