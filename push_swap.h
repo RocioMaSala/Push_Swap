@@ -6,7 +6,7 @@
 /*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 16:56:00 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/06 12:01:32 by jgodino-         ###   ########.fr       */
+/*   Updated: 2026/03/06 14:21:26 by jgodino-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void				sort_three(t_stack *a);
 void				assign_index(t_stack *a);
 void				adaptive_algorithm(t_stack *a, t_stack *b, char *forced);
 float				compute_disorder(t_stack *a);
+void				print_bench(float disorder, char *strat, char *complexity);
 
 void				sa(t_stack *a);
 void				sb(t_stack *b);
@@ -84,7 +85,5 @@ typedef struct s_bench
 }			t_bench;
 
 extern t_bench	g_bench;
-
-void	print_bench(float disorder, char *strat, char *complexity);
 
 #endif

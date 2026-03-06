@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+         #
+#    By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/03/02 17:55:29 by romarti2          #+#    #+#              #
-#    Updated: 2026/03/02 17:56:48 by romarti2         ###   ########.fr        #
+#    Updated: 2026/03/06 15:58:48 by jgodino-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
