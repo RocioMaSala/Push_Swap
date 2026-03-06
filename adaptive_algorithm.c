@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:36:15 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/04 17:33:08 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/06 10:50:20 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 
 	d = compute_disorder(a);
 	strat = "Adaptative";
-	comp = "O(n long n)";
+	comp = "O(n log n)";
 	if (forced && ft_strncmp(forced, "--simple", 8) == 0)
 	{
 		strat = "Simple";
@@ -57,7 +57,7 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 	else if (forced && ft_strncmp(forced, "--medium", 8) == 0)
 	{
 		strat = "Medium";
-		comp = "O(n sqrt n)";
+		comp = "O(n√n)";
 		medium_algorithm(a, b);
 	}
 	else if (forced && ft_strncmp(forced, "--complex", 9) == 0)
@@ -76,7 +76,7 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 		else if (a->size <= 5)
 		{		
 			medium_algorithm(a, b);
-			comp = "O(n sqrt n)";
+			comp = "O(n√n)";
 		}
 		else if (d < 0.2)
 		{
@@ -86,7 +86,7 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 		else if (d < 0.5)
 		{
 			medium_algorithm(a, b);
-			comp = "O(n sqrt n)";
+			comp = "O(n√n)";
 		}
 		else
 		{
@@ -94,7 +94,6 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 			comp = "O(n log n)";
 		}
 	}
-
 	if(g_bench.active)
 		print_bench(d, strat, comp);
 }

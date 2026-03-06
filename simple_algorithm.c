@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 11:27:26 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/04 13:31:26 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/05 18:54:59 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	simple_algorithm(t_stack *stacka, int size)
 {
 	int	i;
 	int	j;
-	int	rotation;
+	//int	rotation;
 
 	if (!stacka || !stacka->front || size < 2)
 		return ;
 	j = 0;
-	rotation = 0;
+	//rotation = 0;
 	while (j < (size - 1))
 	{
 		i = 0;
@@ -30,11 +30,12 @@ void	simple_algorithm(t_stack *stacka, int size)
 			if ((stacka->front->dato) > (stacka->front->next->dato))
 				sa(stacka);
 			ra(stacka);
-			rotation++;
+			//rotation++;
 			i++;
 		}
-		while (rotation--)
-			rra(stacka);
+		ra(stacka);
+		//while (rotation--)
+		//	rra(stacka);
 		j++;
 	}
 }
