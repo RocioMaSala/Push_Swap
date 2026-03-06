@@ -3,86 +3,102 @@
 /*                                                        :::      ::::::::   */
 /*   simple_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 11:27:26 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/05 18:54:59 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/06 12:00:47 by jgodino-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	simple_algorithm(t_stack *stacka, int size)
+int	find_min_pos(t_stack *s)
+{
+	t_node	*tmp;
+	int		min_val;
+	int		min_pos;
+	int		i;
+
+	if (!s || !s->front) return (-1);
+	tmp = s->front;
+	min_val = tmp->dato;
+	min_pos = 0;
+	i = 0;
+	while (tmp)
+	{
+		if (tmp->dato < min_val) { min_val = tmp->dato; min_pos = i; }
+		tmp = tmp->next;
+		i++;
+	}
+	return (min_pos);
+}
+
+void	sort_three(t_stack *a)
+{
+	int	first;
+	int	second;
+	int	third;
+
+	if (a->size != 3) return ;
+	first = a->front->dato;
+	second = a->front->next->dato;
+	third = a->last->dato;
+	if (first > second && second < third && first < third) sa(a);
+	else if (first > second && second > third) { sa(a); rra(a); }
+	else if (first > second && second < third && first > third) ra(a);
+	else if (first < second && second > third && first < third) { sa(a); ra(a); }
+	else if (first < second && second > third && first > third) rra(a);
+}
+
+void	sort_five(t_stack *a, t_stack *b)
+{
+	int	min_pos;
+
+	while (a->size > 3)
+	{
+		min_pos = find_min_pos(a);
+		if (min_pos <= a->size / 2)
+		{
+			while (min_pos-- > 0) ra(a);
+		}
+		else
+		{
+			min_pos = a->size - min_pos;
+			while (min_pos-- > 0) rra(a);
+		}
+		pb(a, b);
+	}
+	sort_three(a);
+	while (b->size > 0) pa(a, b);
+}
+
+void	simple_algorithm(t_stack *a, t_stack *b)
 {
 	int	i;
-	int	j;
-	//int	rotation;
+	int	chunk_size;
 
-	if (!stacka || !stacka->front || size < 2)
-		return ;
-	j = 0;
-	//rotation = 0;
-	while (j < (size - 1))
+	assign_index(a);
+	if (a->size <= 100)
+		chunk_size = 16;
+	else
+		chunk_size = 35; 
+	
+	i = 0;
+	while (a->size > 0)
 	{
-		i = 0;
-		while (i < (size - j - 1))
+		if (a->front->index <= i)
 		{
-			if ((stacka->front->dato) > (stacka->front->next->dato))
-				sa(stacka);
-			ra(stacka);
-			//rotation++;
+			pb(a, b);
+			rb(b);
 			i++;
 		}
-		ra(stacka);
-		//while (rotation--)
-		//	rra(stacka);
-		j++;
+		else if (a->front->index <= i + chunk_size)
+		{
+			pb(a, b);
+			i++;
+		}
+		else
+			ra(a);
 	}
+	push_back_to_a(a, b);
 }
-
-void	push_front(t_stack *stack, int value)
-{
-	t_node	*new_node;
-
-	new_node = malloc(sizeof(t_node));
-	if (!new_node)
-		return ;
-	new_node->dato = value;
-	new_node->next = stack->front;
-	stack->front = new_node;
-}
-/*
-void	print_stack(t_stack *stack)
-{
-	t_node	*current;
-
-	current = stack->front;
-	while (current)
-	{
-		printf("%d ", current->dato);
-		current = current->next;
-	}
-	printf("\n");
-}
-
-int	main(void)
-{
-	t_stack a;
-	a.front = NULL;
-
-	// Insertamos números en el stack
-	push_front(&a, 1);
-	push_front(&a, 6);
-	push_front(&a, 5);
-	push_front(&a, 1);
-
-	printf("Stack inicial: ");
-	print_stack(&a);
-
-	bubble_sort(&a, 4);
-
-	printf("Stack ordenado: ");
-	print_stack(&a);
-
-	return (0);
-}*/

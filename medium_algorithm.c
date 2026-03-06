@@ -3,91 +3,53 @@
 /*                                                        :::      ::::::::   */
 /*   medium_algorithm.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:19:58 by jgodino-          #+#    #+#             */
-/*   Updated: 2026/03/04 13:32:18 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/06 12:08:38 by jgodino-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	find_min_pos(t_stack *s)
+int	ft_sqrt(int n)
 {
-	t_node	*tmp;
-	int		min_val;
-	int		min_pos;
-	int		i;
+	int	i;
 
-	if (!s || !s->front)
-		return (-1);
-	tmp = s->front;
-	min_val = tmp->dato;
-	min_pos = 0;
 	i = 0;
-	while (tmp)
-	{
-		if (tmp->dato < min_val)
-		{
-			min_val = tmp->dato;
-			min_pos = i;
-		}
-		tmp = tmp->next;
+	while (i * i <= n)
 		i++;
-	}
-	return (min_pos);
+	return (i - 1);
 }
+
 
 void	medium_algorithm(t_stack *a, t_stack *b)
 {
-	int	min_pos;
+	int	i;
+	int	chunk_size;
 
-	while (a->size > 3)
+	assign_index(a);
+	if (a->size <= 100)
+		chunk_size = 15;
+	else
+		chunk_size = ft_sqrt(a->size); 
+	
+	i = 0;
+	while (a->size > 0)
 	{
-		min_pos = find_min_pos(a);
-		if (min_pos <= a->size / 2)
+		if (a->front->index <= i)
 		{
-			while (min_pos-- > 0)
-				ra(a);
+			pb(a, b);
+			rb(b);
+			i++;
+		}
+		else if (a->front->index <= i + chunk_size)
+		{
+			pb(a, b);
+			i++;
 		}
 		else
-		{
-			min_pos = a->size - min_pos;
-			while (min_pos-- > 0)
-				rra(a);
-		}
-		pb(a, b);
+			ra(a);
 	}
-	sort_three(a);
-	while (b->size > 0)
-		pa(a, b);
-}
-
-void	sort_three(t_stack *a)
-{
-	int	first;
-	int	second;
-	int	third;
-
-	if (a->size != 3)
-		return ;
-	first = a->front->dato;
-	second = a->front->next->dato;
-	third = a->last->dato;
-	if (first > second && second < third && first < third)
-		sa(a);
-	else if (first > second && second > third)
-	{
-		sa(a);
-		rra(a);
-	}
-	else if (first > second && second < third && first > third)
-		ra(a);
-	else if (first < second && second > third && first < third)
-	{
-		sa(a);
-		ra(a);
-	}
-	else if (first < second && second > third && first > third)
-		rra(a);
+	push_back_to_a(a, b);
 }

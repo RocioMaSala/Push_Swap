@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/18 16:56:00 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/02 17:42:26 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/06 12:01:32 by jgodino-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void				parse_to_stack(int argc, char **argv, t_stack *a);
 void				free_stack(t_stack *s);
 void				initializer_stack(t_stack *s);
 
-void				simple_algorithm(t_stack *a, int size);
+void				simple_algorithm(t_stack *a, t_stack *b);
 void				medium_algorithm(t_stack *a, t_stack *b);
 void				complex_algorithm(t_stack *a, t_stack *b);
 void				sort_three(t_stack *a);
@@ -62,6 +62,9 @@ void				rotate_silent(t_stack *s);
 void				reverse_rotate_silent(t_stack *s);
 
 void				error_exit(t_stack *a, t_stack *b);
+
+void				sort_five(t_stack *a, t_stack *b);
+void				push_back_to_a(t_stack *a, t_stack *b);
 
 typedef struct s_bench
 {

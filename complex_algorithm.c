@@ -93,26 +93,31 @@ void	push_back_to_a(t_stack *a, t_stack *b)
 
 void	complex_algorithm(t_stack *a, t_stack *b)
 {
-	int	sizeb;
-	int	range;
+	int size;
+	int num_max;
+	int max_bit;
+	int i;
+	int j;
 
-	range = 1.3 * (a->size / 5);
-	assign_index(a);
-	while ((a->size) > 0)
+	size = a->size;
+	num_max = size - 1;
+	max_bit = 0;
+	i = 0;
+	while((num_max >> max_bit) != 0)
+		max_bit++;
+	while (i < max_bit)
 	{
-		sizeb = b->size;
-		if ((a->front->index) >= (sizeb + range))
-			ra(a);
-		else if (((a->front->index) > sizeb) && ((a->front->index) < (sizeb
-					+ range)))
+		j = 0;
+		while (j < size)
 		{
-			pb(a, b);
+			if(((a->front->index >> i) & 1) == 1)
+				ra(a);
+			else
+				pb(a, b);
+			j++;
 		}
-		else if ((a->front->index) <= sizeb)
-		{
-			pb(a, b);
-			rb(b);
-		}
+		while (b->size > 0)
+			pa(a,b);	
+		i++;
 	}
-	push_back_to_a(a, b);
 }

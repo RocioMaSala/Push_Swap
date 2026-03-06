@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   adaptive_algorithm.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:36:15 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/06 10:50:20 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/06 12:07:17 by jgodino-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 	{
 		strat = "Simple";
 		comp = "O(n^2)";
-		simple_algorithm(a, a->size);
+		simple_algorithm(a, b);
 	}
 	else if (forced && ft_strncmp(forced, "--medium", 8) == 0)
 	{
@@ -71,16 +71,16 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 		if (a->size == 3)
 		{
 			sort_three(a);
-			comp = "O(n^2)";
+			comp = "O(1)";
 		}
 		else if (a->size <= 5)
 		{		
-			medium_algorithm(a, b);
-			comp = "O(n√n)";
+			sort_five(a, b);
+			comp = "O(n)";
 		}
 		else if (d < 0.2)
 		{
-			simple_algorithm(a, a->size);
+			simple_algorithm(a, b);
 			comp = "O(n^2)";
 		}
 		else if (d < 0.5)
