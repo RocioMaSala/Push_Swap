@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:31:24 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/04 13:21:06 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/06 16:11:08 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,31 +93,31 @@ void	push_back_to_a(t_stack *a, t_stack *b)
 
 void	complex_algorithm(t_stack *a, t_stack *b)
 {
-	int size;
-	int num_max;
-	int max_bit;
-	int i;
-	int j;
+	int	size;
+	int	num_max;
+	int	max_bit;
+	int	i;
+	int	j;
 
 	size = a->size;
 	num_max = size - 1;
 	max_bit = 0;
 	i = 0;
-	while((num_max >> max_bit) != 0)
+	while ((num_max >> max_bit) != 0)
 		max_bit++;
 	while (i < max_bit)
 	{
 		j = 0;
 		while (j < size)
 		{
-			if(((a->front->index >> i) & 1) == 1)
+			if (((a->front->index >> i) & 1) == 1)
 				ra(a);
 			else
 				pb(a, b);
 			j++;
 		}
 		while (b->size > 0)
-			pa(a,b);	
+			pa(a, b);
 		i++;
 	}
 }

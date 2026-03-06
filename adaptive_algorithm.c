@@ -6,7 +6,7 @@
 /*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:36:15 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/06 12:07:17 by jgodino-         ###   ########.fr       */
+/*   Updated: 2026/03/06 16:08:08 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 		medium_algorithm(a, b);
 	}
 	else if (forced && ft_strncmp(forced, "--complex", 9) == 0)
-	{	
+	{
 		strat = "Complex";
 		comp = "O(n log n)";
 		complex_algorithm(a, b);
@@ -74,7 +74,7 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 			comp = "O(1)";
 		}
 		else if (a->size <= 5)
-		{		
+		{
 			sort_five(a, b);
 			comp = "O(n)";
 		}
@@ -94,6 +94,6 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *forced)
 			comp = "O(n log n)";
 		}
 	}
-	if(g_bench.active)
+	if (g_bench.active)
 		print_bench(d, strat, comp);
 }

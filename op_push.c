@@ -6,7 +6,7 @@
 /*   By: romarti2 <romarti2@student.42madrid.com:w  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 12:58:34 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/04 12:58:34 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/06 16:10:18 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	pa(t_stack *a, t_stack *b)
 	tmp->prev = NULL;
 	a->size++;
 	write(1, "pa\n", 3);
-	if(g_bench.active)
+	if (g_bench.active)
 	{
 		g_bench.pa++;
 		g_bench.total++;
@@ -63,7 +63,7 @@ void	pb(t_stack *a, t_stack *b)
 	tmp->prev = NULL;
 	b->size++;
 	write(1, "pb\n", 3);
-	if(g_bench.active)
+	if (g_bench.active)
 	{
 		g_bench.pb++;
 		g_bench.total++;

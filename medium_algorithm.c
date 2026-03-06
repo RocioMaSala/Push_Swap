@@ -6,7 +6,7 @@
 /*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:19:58 by jgodino-          #+#    #+#             */
-/*   Updated: 2026/03/06 12:08:38 by jgodino-         ###   ########.fr       */
+/*   Updated: 2026/03/06 16:11:01 by romarti2         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int	ft_sqrt(int n)
 	return (i - 1);
 }
 
-
 void	medium_algorithm(t_stack *a, t_stack *b)
 {
 	int	i;
@@ -32,8 +31,7 @@ void	medium_algorithm(t_stack *a, t_stack *b)
 	if (a->size <= 100)
 		chunk_size = 15;
 	else
-		chunk_size = ft_sqrt(a->size); 
-	
+		chunk_size = ft_sqrt(a->size);
 	i = 0;
 	while (a->size > 0)
 	{
