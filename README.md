@@ -25,43 +25,73 @@ rra / rrb — reverse rotate.
 
 rrr — simultaneous reverse rotate.
 
-## Algorithms Used
+## Algorithms Used - Sorting Strategy
 
-### 1. Simple Case: Bubble Sort
+The program implements different sorting strategies depending on the size of the input set. This approach minimizes the number of operations within the push_swap model by using specialized algorithms for small inputs and more scalable algorithms for larger datasets.
 
-Time Complexity: O(n²)
+### Simple Algorithm
 
-Simple implementation with full control over swaps.
+This algorithm is used for small or medium-sized inputs.
 
-Ideal for very small lists where the overhead of more complex algorithms is not justified.
+First, the values are normalized using assign_index, assigning each element an index corresponding to its position in the sorted order.
 
-Allows quick detection of whether the stack is already sorted.
+Then, elements are moved from stack_a to stack_b using a fixed chunk strategy:
 
-### 2. Intermediate Case: Sort_Three
+16 if n ≤ 100
 
-Time Complexity: O(n √n)
+35 if n > 100
 
-Only 6 possible combinations exist.
+Elements are pushed to stack_b depending on their index relative to the current range. Once all elements have been processed, stack_a is reconstructed by pushing elements back from stack_b in sorted order.
 
-Achieves the minimum number of movements.
+Time Complexity: Approximately O(n²) due to the rotations required to locate elements.
 
-Avoids unnecessary logic.
+### Medium Algorithm
 
-The relative positions are directly analyzed, and optimal combinations of sa, ra, and rra are applied.
+The medium algorithm is a variation of the chunk-based strategy but with dynamic chunk sizes.
 
-This approach guarantees maximum efficiency for the most common small evaluation case.
+The chunk size is defined as:
 
-### 3. Complex Case: KSort
+15 if n ≤ 100
+
+√n if n > 100
+
+Using √n helps balance the number of rotations and the distribution of elements in stack_b, improving performance for larger inputs.
+
+The rest of the process is similar to the simple algorithm.
+
+Time Complexity: Approximately O(n sqrt n).
+
+### Complex Algorithm
+
+For large datasets, the program uses a binary Radix Sort adapted to the push_swap operation model.
+
+After normalizing the values with assign_index, the algorithm processes the bits of the indices from the least significant bit to the most significant one.
+
+For each bit:
+
+if the bit is 1 → rotate stack_a (ra)
+
+if the bit is 0 → push the element to stack_b (pb)
+
+After processing all elements for a given bit, the elements stored in stack_b are pushed back to stack_a using pa.
+
+This process is repeated for all bits required to represent the maximum index.
 
 Time Complexity: O(n log n)
 
-K Sort is an algorithm based on:
+### Threshold Justification
 
-Strategic division into ranges (dynamic chunks).
+The chunk sizes (15, 16, 35, and √n) were chosen to balance:
 
-Progressive pushing to stack B.
+the number of rotations required
 
-Ordered reconstruction back to stack A.
+the distribution of elements in stack_b
+
+the total number of operations produced
+
+Chunks that are too small cause excessive rotations in stack_a, while chunks that are too large lead to poor distribution in stack_b.
+
+Using √n in the medium algorithm provides a scalable heuristic that adapts the chunk size to the input size, keeping the number of operations within efficient limits for the project.
 
 ## Instructions
 
