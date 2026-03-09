@@ -3,44 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   op_b.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 13:32:12 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/06 16:10:27 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/09 11:22:55 by jgodino-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sb(t_stack *b)
+void	sb(t_stack *b, t_bench *bench)
 {
 	swap_silent(b);
 	write(1, "sb\n", 3);
-	if (g_bench.active)
+	if (bench && bench->active)
 	{
-		g_bench.sb++;
-		g_bench.total++;
+		bench->sb++;
+		bench->total++;
 	}
 }
 
-void	rb(t_stack *b)
+void	rb(t_stack *b, t_bench *bench)
 {
 	rotate_silent(b);
 	write(1, "rb\n", 3);
-	if (g_bench.active)
+	if (bench && bench->active)
 	{
-		g_bench.rb++;
-		g_bench.total++;
+		bench->rb++;
+		bench->total++;
 	}
 }
 
-void	rrb(t_stack *b)
+void	rrb(t_stack *b, t_bench *bench)
 {
 	reverse_rotate_silent(b);
 	write(1, "rrb\n", 4);
-	if (g_bench.active)
+	if (bench && bench->active)
 	{
-		g_bench.rrb++;
-		g_bench.total++;
+		bench->rrb++;
+		bench->total++;
 	}
 }

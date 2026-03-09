@@ -6,7 +6,7 @@
 /*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 12:40:31 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/06 14:45:21 by jgodino-         ###   ########.fr       */
+/*   Updated: 2026/03/09 11:25:46 by jgodino-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,27 @@ void	error_exit(t_stack *a, t_stack *b)
 	exit(1);
 }
 
+static int	parse_flags(int argc, char **argv, t_bench *bench, char **forced)
+{
+	int	i;
+
+	i = 1;
+	while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
+	{
+		if (ft_strncmp(argv[i], "--bench", 8) == 0)
+			bench->active = 1;
+		else
+			*forced = argv[i];
+		i++;
+	}
+	return (i);
+}
+
 int	main(int argc, char **argv)
 {
 	t_stack	a;
 	t_stack	b;
+	t_bench	bench;
 	char	*forced;
 	int		i;
 
@@ -31,21 +48,14 @@ int	main(int argc, char **argv)
 		return (0);
 	initializer_stack(&a);
 	initializer_stack(&b);
+	ft_memset(&bench, 0, sizeof(t_bench));
 	forced = NULL;
-	i = 1;
-	while (i < argc && argv[i][0] == '-' && argv[i][1] == '-')
-	{
-		if (ft_strncmp(argv[i], "--bench", 8) == 0)
-			g_bench.active = true;
-		else
-			forced = argv[i];
-		i++;
-	}
+	i = parse_flags(argc, argv, &bench, &forced);
 	parse_to_stack(argc - i + 1, &argv[i - 1], &a);
 	if (a.size > 1)
 	{
 		assign_index(&a);
-		adaptive_algorithm(&a, &b, forced);
+		adaptive_algorithm(&a, &b, forced, &bench);
 	}
 	free_stack(&a);
 	free_stack(&b);

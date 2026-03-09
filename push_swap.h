@@ -3,17 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jgodino- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/18 16:56:00 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/06 16:14:40 by romarti2         ###   ########.fr       */
+/*   Created: 2026/03/09 11:23:45 by jgodino-          #+#    #+#             */
+/*   Updated: 2026/03/09 11:23:48 by jgodino-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include "./libft/libft.h"
@@ -33,38 +32,6 @@ typedef struct s_stack
 	int				size;
 }					t_stack;
 
-void				add_back(t_stack *s, int dato);
-void				parse_to_stack(int argc, char **argv, t_stack *a);
-void				free_stack(t_stack *s);
-void				initializer_stack(t_stack *s);
-
-void				simple_algorithm(t_stack *a, t_stack *b);
-void				medium_algorithm(t_stack *a, t_stack *b);
-void				complex_algorithm(t_stack *a, t_stack *b);
-void				sort_three(t_stack *a);
-void				assign_index(t_stack *a);
-void				adaptive_algorithm(t_stack *a, t_stack *b, char *forced);
-float				compute_disorder(t_stack *a);
-void				print_bench(float disorder, char *strat, char *complexity);
-
-void				sa(t_stack *a);
-void				sb(t_stack *b);
-void				pa(t_stack *a, t_stack *b);
-void				pb(t_stack *a, t_stack *b);
-void				ra(t_stack *a);
-void				rb(t_stack *b);
-void				rra(t_stack *a);
-void				rrb(t_stack *b);
-
-void				swap_silent(t_stack *s);
-void				rotate_silent(t_stack *s);
-void				reverse_rotate_silent(t_stack *s);
-
-void				error_exit(t_stack *a, t_stack *b);
-
-void				sort_five(t_stack *a, t_stack *b);
-void				push_back_to_a(t_stack *a, t_stack *b);
-
 typedef struct s_bench
 {
 	int		sa;
@@ -79,9 +46,44 @@ typedef struct s_bench
 	int		rrb;
 	int		rrr;
 	int		total;
-	bool	active;
+	int		active;
 }			t_bench;
 
-extern t_bench	g_bench;
+void				add_back(t_stack *s, int dato);
+void				parse_to_stack(int argc, char **argv, t_stack *a);
+void				free_stack(t_stack *s);
+void				initializer_stack(t_stack *s);
+
+void				simple_algorithm(t_stack *a, t_stack *b, t_bench *bench);
+void				medium_algorithm(t_stack *a, t_stack *b, t_bench *bench);
+void				complex_algorithm(t_stack *a, t_stack *b, t_bench *bench);
+void				sort_three(t_stack *a, t_bench *bench);
+void				assign_index(t_stack *a);
+void				adaptive_algorithm(t_stack *a, t_stack *b, char *forced,
+						t_bench *bench);
+float				compute_disorder(t_stack *a);
+void				print_bench(float disorder, char *strat, char *comp,
+						t_bench *b);
+
+void				sa(t_stack *a, t_bench *bench);
+void				sb(t_stack *b, t_bench *bench);
+void				pa(t_stack *a, t_stack *b, t_bench *bench);
+void				pb(t_stack *a, t_stack *b, t_bench *bench);
+void				ra(t_stack *a, t_bench *bench);
+void				rb(t_stack *b, t_bench *bench);
+void				rra(t_stack *a, t_bench *bench);
+void				rrb(t_stack *b, t_bench *bench);
+void				ss(t_stack *a, t_stack *b, t_bench *bench);
+void				rr(t_stack *a, t_stack *b, t_bench *bench);
+void				rrr(t_stack *a, t_stack *b, t_bench *bench);
+
+void				swap_silent(t_stack *s);
+void				rotate_silent(t_stack *s);
+void				reverse_rotate_silent(t_stack *s);
+
+void				error_exit(t_stack *a, t_stack *b);
+
+void				sort_five(t_stack *a, t_stack *b, t_bench *bench);
+void				push_back_to_a(t_stack *a, t_stack *b, t_bench *bench);
 
 #endif

@@ -36,14 +36,7 @@ void	assign_index(t_stack *a)
 	}
 }
 
-int	get_range(t_stack *s)
-{
-	if (s->size <= 100)
-		return (15);
-	return (35);
-}
-
-int	get_max_index_pos(t_stack *b)
+static int	get_max_index_pos(t_stack *b)
 {
 	t_node	*tmp;
 	int		max_idx;
@@ -67,7 +60,7 @@ int	get_max_index_pos(t_stack *b)
 	return (pos);
 }
 
-void	push_back_to_a(t_stack *a, t_stack *b)
+void	push_back_to_a(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	max_pos;
 	int	size_b;
@@ -79,45 +72,49 @@ void	push_back_to_a(t_stack *a, t_stack *b)
 		if (max_pos <= size_b / 2)
 		{
 			while (max_pos-- > 0)
-				rb(b);
+				rb(b, bench);
 		}
 		else
 		{
 			max_pos = size_b - max_pos;
 			while (max_pos-- > 0)
-				rrb(b);
+				rrb(b, bench);
 		}
-		pa(a, b);
+		pa(a, b, bench);
 	}
 }
 
-void	complex_algorithm(t_stack *a, t_stack *b)
+static int	get_max_bits(int num_max)
+{
+	int	max_bit;
+
+	max_bit = 0;
+	while ((num_max >> max_bit) != 0)
+		max_bit++;
+	return (max_bit);
+}
+
+void	complex_algorithm(t_stack *a, t_stack *b, t_bench *bench)
 {
 	int	size;
-	int	num_max;
 	int	max_bit;
 	int	i;
 	int	j;
 
 	size = a->size;
-	num_max = size - 1;
-	max_bit = 0;
-	i = 0;
-	while ((num_max >> max_bit) != 0)
-		max_bit++;
-	while (i < max_bit)
+	max_bit = get_max_bits(size - 1);
+	i = -1;
+	while (++i < max_bit)
 	{
-		j = 0;
-		while (j < size)
+		j = -1;
+		while (++j < size)
 		{
 			if (((a->front->index >> i) & 1) == 1)
-				ra(a);
+				ra(a, bench);
 			else
-				pb(a, b);
-			j++;
+				pb(a, b, bench);
 		}
 		while (b->size > 0)
-			pa(a, b);
-		i++;
+			pa(a, b, bench);
 	}
 }

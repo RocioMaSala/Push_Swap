@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: romarti2 <romarti2@student.42madrid.com    +#+  +:+       +#+        */
+/*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/04 12:59:15 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/06 18:56:40 by romarti2         ###   ########.fr       */
+/*   Updated: 2026/03/09 11:21:37 by jgodino-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,53 @@ void	parse_to_stack(int argc, char **argv, t_stack *a)
 		free(temp);
 		i++;
 	}
+}
+
+static int	find_min_pos(t_stack *s)
+{
+	t_node	*tmp;
+	int		min_val;
+	int		min_pos;
+	int		i;
+
+	tmp = s->front;
+	min_val = tmp->dato;
+	min_pos = 0;
+	i = 0;
+	while (tmp)
+	{
+		if (tmp->dato < min_val)
+		{
+			min_val = tmp->dato;
+			min_pos = i;
+		}
+		tmp = tmp->next;
+		i++;
+	}
+	return (min_pos);
+}
+
+void	sort_five(t_stack *a, t_stack *b, t_bench *bench)
+{
+	int	min_pos;
+
+	while (a->size > 3)
+	{
+		min_pos = find_min_pos(a);
+		if (min_pos <= a->size / 2)
+		{
+			while (min_pos-- > 0)
+				ra(a, bench);
+		}
+		else
+		{
+			min_pos = a->size - min_pos;
+			while (min_pos-- > 0)
+				rra(a, bench);
+		}
+		pb(a, b, bench);
+	}
+	sort_three(a, bench);
+	while (b->size > 0)
+		pa(a, b, bench);
 }
