@@ -6,7 +6,7 @@
 /*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/23 16:19:58 by jgodino-          #+#    #+#             */
-/*   Updated: 2026/03/09 11:25:20 by jgodino-         ###   ########.fr       */
+/*   Updated: 2026/03/09 12:23:35 by jgodino-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ static int	ft_sqrt(int n)
 
 static int	get_chunk_size(int size)
 {
-	if (size <= 100)
-		return (15);
 	return (ft_sqrt(size));
 }
 

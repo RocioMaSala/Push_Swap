@@ -51,9 +51,7 @@ The medium algorithm is a variation of the chunk-based strategy but with dynamic
 
 The chunk size is defined as:
 
-15 if n ≤ 100
-
-√n if n > 100
+√n 
 
 Using √n helps balance the number of rotations and the distribution of elements in stack_b, improving performance for larger inputs.
 
@@ -81,7 +79,7 @@ Time Complexity: O(n log n)
 
 ### Threshold Justification
 
-The chunk sizes (15, 16, 35, and √n) were chosen to balance:
+The chunk sizes (15, 35, and √n) were chosen to balance:
 
 the number of rotations required
 

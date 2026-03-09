@@ -6,7 +6,7 @@
 /*   By: jgodino- <jgodino-@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/02 16:36:15 by romarti2          #+#    #+#             */
-/*   Updated: 2026/03/09 11:27:20 by jgodino-         ###   ########.fr       */
+/*   Updated: 2026/03/09 12:29:08 by jgodino-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,8 @@ void	adaptive_algorithm(t_stack *a, t_stack *b, char *f, t_bench *bench)
 	char	*comp;
 
 	d = compute_disorder(a);
+	if (d == 0)
+		exit(1);
 	comp = NULL;
 	if (f)
 		comp = run_forced(a, b, f, bench);
